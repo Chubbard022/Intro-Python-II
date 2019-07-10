@@ -4,7 +4,7 @@ from room import Room
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                    "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -20,7 +20,6 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
-
 
 # Link rooms together
 
