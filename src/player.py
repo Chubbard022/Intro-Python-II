@@ -7,3 +7,6 @@ class Player(Room):
     def __init__(self,name,current_location):
         self.name = name
         self.current_location = current_location
+
+    def __str__(self):
+        print(f"{self.name} is in the {self.current_location}")
