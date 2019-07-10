@@ -9,3 +9,6 @@ class Room:
         self.w_to = None
         self.e_to = None
         self.s_to = None
+
+    def __str__(self):
+        print(f"room:{self.title}--description:{self.description}")
