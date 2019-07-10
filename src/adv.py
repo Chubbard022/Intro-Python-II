@@ -53,7 +53,7 @@ while True:
 
     player1 = Player("curtis", room["outside"],0)
     
-    print(f"{player1.name} is currently in {player1.current_location}")
+    print(f"{player1.name} is currently in {player1.current_location.title}")
     move = input(f"{player1.name} your next move n,e,s,w and q to quit -> ")
 
     if move == "n":

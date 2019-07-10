@@ -4,6 +4,7 @@ from room import Room
 
 class Player(Room):
     health = 100
+    
     def __init__(self,name,current_location,items):
         self.name = name
         self.current_location = current_location
