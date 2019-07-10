@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -50,17 +50,34 @@ room['treasure'].s_to = room['narrow']
 # If the user enters "q", quit the game.
 
 while True:
-    cmd = input("Where would you like to move? -> ")
 
-    if player.input == :
-        do something
-    elif player.input == :
-        do something
-    elif cmd == "q":
+    player1 = Player("curtis", room["outside"],0)
+    
+    print(f"{player1.name} is currently in {player1.current_location}")
+    move = input(f"{player1.name} your next move n,e,s,w and q to quit -> ")
+
+    if move == "n":
+        if player1.current_location.n_to is not None:
+            north_room = player1.current_location.n_to
+            player1.current_location = north_room
+            continue
+    elif move == "e":
+        if player1.current_location.e_to is not None:
+            east_room = player1.current_location.e_to
+            player1.current_location = east_room
+            continue
+    elif move == "s":
+        if player1.current_location.s_to is not None:
+            south_room = player1.current_location.s_to
+            player1.current_location = south_room
+            continue
+    elif move == "w":
+        if player1.current_location.w_to is not None:
+            west_room = player1.current_location.w_to
+            player1.current_location = west_room
+            continue
+    elif move == "q":
         print("thanks for playing")
         break
     else:
-       print("Wrong move, you cannot go that direction")
-    print(f"{Room.location}-{Room.description}")
-
-
+        print("Wrong move, you cannot go that direction")
