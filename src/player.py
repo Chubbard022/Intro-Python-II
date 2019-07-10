@@ -3,7 +3,7 @@
 from room import Room
 
 class Player(Room):
-    def __init__(self,name,location):
+    health = 100
+    def __init__(self,name,current_location):
         self.name = name
-        self.location = location
-        
+        self.current_location = current_location
