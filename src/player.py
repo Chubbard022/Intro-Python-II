@@ -3,5 +3,7 @@
 from room import Room
 
 class Player(Room):
-    def __init__(self):
-        pass
+    def __init__(self,name,location):
+        self.name = name
+        self.location = location
+        

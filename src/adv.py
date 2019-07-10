@@ -49,5 +49,18 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
+while True:
+    cmd = input("Where would you like to move? -> ")
+
+    if player.input == :
+        do something
+    elif player.input == :
+        do something
+    elif cmd == "q":
+        print("thanks for playing")
+        break
+    else:
+       print("Wrong move, you cannot go that direction")
+    print(f"{Room.location}-{Room.description}")
 
 
