@@ -49,32 +49,51 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+player = Player("Curtis", room['outside'])
 
 while True:
+    print(player.current_room.name)
+    print(player.current_room.description)
 
-    player = Player("curtis", room["outside"])
+    move = input("? ").strip().split(' ')
+    cmd = move[0]
     
-    
-    print(f"{player.name} is currently in {player.current_location.title}")
-    print(f"the {player.current_location.description}")
-
-    move = input(f"{player.name} choose a direction: ")
-
-
-    if move == "n":
-        if player.current_location.e_to is not None:
-            player.current_location = player.current_location.n_to
-    elif move == "e" or move == "east":
-        if player.current_location.e_to is not None:
-            player.current_location = player.current_location.e_to
-    elif move == "s" or move == "south":
-        if player.current_location.e_to is not None:
-            player.current_location = player.current_location.s_to
-    elif move == "w" or move == "west":
-        if player.current_location.w_to is not None:
-            player.current_location = player.current_location.w_to
-    elif move == "q" or move == "quit" or move == "exit":
-        print("thanks for playing")
+    if cmd == 'q' or cmd == 'quit':
         break
+    elif cmd == 'i' or cmd == 'inventory':
+        print(f"*** {player.name}'s inventory ***")
+        if len(player.items):
+            for item in player.items:
+                print(item.name)
+        else:
+            print('None')
+    elif cmd == 'l' or cmd == 'look':
+        print('*** Items in room ***')
+        if len(player.current_room.items):
+            for item in player.current_room.items:
+                print(item.name)
+        else:
+            print('None')
+    elif cmd == 'e' or cmd == 'east':
+        if player.current_room.e_to is not None:
+            player.current_room = player.current_room.e_to
+        else:
+            print(f"{player.name} cannot move in that direction")
+    elif cmd == 's' or cmd == 'south':
+        if player.current_room.s_to is not None:
+            player.current_room = player.current_room.s_to
+        else:
+            print(f"{player.name} cannot move in that direction")
+    elif cmd == 'w' or cmd == 'west':
+        if player.current_room.w_to is not None:
+            player.current_room = player.current_room.w_to
+        else:
+            print(f"{player.name} cannot move in that direction")
+    elif cmd == 'n' or cmd == 'north':
+        if player.current_room.n_to is not None:
+            player.current_room = player.current_room.n_to
+        else:
+            print(f"{player.name} cannot move in that direction")
     else:
-        print("Wrong move, you cannot go that direction")
+        print('!!! Invalid command !!!')
+
