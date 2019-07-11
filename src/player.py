@@ -3,9 +3,9 @@
 
 class Player:
     health = 100
-    def __init__(self,name,current_location):
+    def __init__(self,name,current_room):
         self.name = name
-        self.current_location = current_location
+        self.current_room = current_room
         self.items = []
 
     # def __str__(self):
