@@ -1,10 +1,10 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                    "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -21,7 +21,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -32,6 +31,7 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
 
 #
 # Main
@@ -49,3 +49,22 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+player = Player("Curtis", room['outside'])
+current_room = player.current_room
+
+print(current_room)
+
+valid_directions = ["n", "s", "e", "w"]
+
+while True:
+    # Wait for user input
+    cmd = input("-> ")
+    # Parse user inputs (n, s, e, w, q)
+    if cmd in valid_directions:
+        # If input is valid, move the player and loop
+        player.travel(cmd)
+    elif cmd == "q":
+        print("Goodbye!")
+        exit()
+    else:
+        print("I did not recognize that command")
