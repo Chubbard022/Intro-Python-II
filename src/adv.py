@@ -50,50 +50,21 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 player = Player("Curtis", room['outside'])
+current_room = player.current_room
+
+print(current_room)
+
+valid_directions = ["n", "s", "e", "w"]
 
 while True:
-    print(player.current_room.name)
-    print(player.current_room.description)
-
-    move = input("? ").strip().split(' ')
-    cmd = move[0]
-    
-    if cmd == 'i' or cmd == 'inventory':
-        print(f"*** {player.name}'s inventory ***")
-        if len(player.items):
-            for item in player.items:
-                print(item.name)
-        else:
-            print('None')
-    elif cmd == 'l' or cmd == 'look':
-        print('*** Items in room ***')
-        if len(player.current_room.items):
-            for item in player.current_room.items:
-                print(item.name)
-        else:
-            print('None')
-    elif cmd == 'e' or cmd == 'east':
-        if player.current_room.e_to is not None:
-            player.current_room = player.current_room.e_to
-        else:
-            print(f"{player.name} cannot move in that direction")
-    elif cmd == 's' or cmd == 'south':
-        if player.current_room.s_to is not None:
-            player.current_room = player.current_room.s_to
-        else:
-            print(f"{player.name} cannot move in that direction")
-    elif cmd == 'w' or cmd == 'west':
-        if player.current_room.w_to is not None:
-            player.current_room = player.current_room.w_to
-        else:
-            print(f"{player.name} cannot move in that direction")
-    elif cmd == 'n' or cmd == 'north':
-        if player.current_room.n_to is not None:
-            player.current_room = player.current_room.n_to
-        else:
-            print(f"{player.name} cannot move in that direction")
-    elif cmd == 'q' or cmd == 'quit':
-        break
+    # Wait for user input
+    cmd = input("-> ")
+    # Parse user inputs (n, s, e, w, q)
+    if cmd in valid_directions:
+        # If input is valid, move the player and loop
+        player.travel(cmd)
+    elif cmd == "q":
+        print("Goodbye!")
+        exit()
     else:
-        print('!!! Invalid command !!!')
-
+        print("I did not recognize that command")

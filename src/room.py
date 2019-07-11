@@ -9,5 +9,10 @@ class Room:
         self.n_to = None
         self.w_to = None
         self.e_to = None
+
         self.s_to = None
-        
+    def __str__(self):
+        str = f"\n------------------------------"
+        str += f"\n{self.name}"   
+        str += f"\n {self.description}"
+        return str
