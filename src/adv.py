@@ -58,9 +58,7 @@ while True:
     move = input("? ").strip().split(' ')
     cmd = move[0]
     
-    if cmd == 'q' or cmd == 'quit':
-        break
-    elif cmd == 'i' or cmd == 'inventory':
+    if cmd == 'i' or cmd == 'inventory':
         print(f"*** {player.name}'s inventory ***")
         if len(player.items):
             for item in player.items:
@@ -94,6 +92,8 @@ while True:
             player.current_room = player.current_room.n_to
         else:
             print(f"{player.name} cannot move in that direction")
+    elif cmd == 'q' or cmd == 'quit':
+        break
     else:
         print('!!! Invalid command !!!')
 
