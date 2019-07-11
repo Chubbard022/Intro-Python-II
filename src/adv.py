@@ -32,6 +32,7 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+
 #
 # Main
 #
@@ -51,24 +52,28 @@ room['treasure'].s_to = room['narrow']
 
 while True:
 
-    player1 = Player("curtis", room["outside"],0)
+    player = Player("curtis", room["outside"])
     
-    print(f"{player1.name} is currently in {player1.current_location.title}")
-    move = input(f"{player1.name} your next move n,e,s,w and q to quit -> ")
+    
+    print(f"{player.name} is currently in {player.current_location.title}")
+    print(f"the {player.current_location.description}")
+
+    move = input(f"{player.name} choose a direction: ")
+
 
     if move == "n":
-        north_room = player1.current_location.n_to
-        player1.current_location = north_room
-    elif move == "e":
-        east_room = player1.current_location.e_to
-        player1.current_location = east_room
-    elif move == "s":
-        south_room = player1.current_location.s_to
-        player1.current_location = south_room
-    elif move == "w":
-        west_room = player1.current_location.w_to
-        player1.current_location = west_room
-    elif move == "q":
+        if player.current_location.e_to is not None:
+            player.current_location = player.current_location.n_to
+    elif move == "e" or move == "east":
+        if player.current_location.e_to is not None:
+            player.current_location = player.current_location.e_to
+    elif move == "s" or move == "south":
+        if player.current_location.e_to is not None:
+            player.current_location = player.current_location.s_to
+    elif move == "w" or move == "west":
+        if player.current_location.w_to is not None:
+            player.current_location = player.current_location.w_to
+    elif move == "q" or move == "quit" or move == "exit":
         print("thanks for playing")
         break
     else:
